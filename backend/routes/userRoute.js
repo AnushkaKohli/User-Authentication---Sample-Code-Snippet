@@ -1,4 +1,14 @@
-const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getUserDetails, changePassword, updateProfile } = require("../controllers/userController");
+const {
+  registerUser,
+  loginUser,
+  logoutUser,
+  forgotPassword,
+  resetPassword,
+  getUserDetails,
+  changePassword,
+  updateProfile,
+  setCookie,
+} = require("../controllers/userController");
 const express = require("express");
 const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router();
@@ -10,8 +20,9 @@ router.route("/login").post(loginUser);
 router.route("/password/forgot").post(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
 router.route("/password/change").put(isAuthenticatedUser, changePassword);
-router.route("/me").get(isAuthenticatedUser, getUserDetails);
+router.route("/me").get(getUserDetails);
 router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 router.route("/logout").get(logoutUser);
+router.route("/set").get(setCookie);
 
 module.exports = router;
