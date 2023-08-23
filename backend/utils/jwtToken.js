@@ -4,11 +4,12 @@ const sendToken = (user, statusCode, res) => {
 
   //Options for cookie
   const options = {
-    expires: new Date(
-      //COOKIE_EXPIRE is in days so converted to msec as 24hrs, 60min, 60sec, 1000msec
-      Date.now() + process.env.COOKIE_EXPIRE * 60 * 1000
-    ),
+    // expires: new Date(
+    //   //COOKIE_EXPIRE is in days so converted to msec as 24hrs, 60min, 60sec, 1000msec
+    //   Date.now() + process.env.COOKIE_EXPIRE * 60 * 1000
+    // ),
     httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24, // would expire after 7 days
   };
 
   res.status(statusCode).cookie("token", token, options).json({

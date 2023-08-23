@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173", // when u r sharing credentials, u need to specify the origin. Origin cannot be *.
+    credentials: true,
   })
 );
 

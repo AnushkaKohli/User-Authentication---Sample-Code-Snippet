@@ -7,7 +7,7 @@ const crypto = require("crypto");
 
 const setCookie = catchAsyncErrors(async (req, res, next) => {
   res
-    .cookie("tooken", "12345", {
+    .cookie("token", "12345", {
       maxAge: 50000,
       httpOnly: true,
       secure: true,
